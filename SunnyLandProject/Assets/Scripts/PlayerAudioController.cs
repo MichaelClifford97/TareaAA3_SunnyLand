@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerAudioController : MonoBehaviour
 {
+    AudioSource jump;
+    AudioSource run;
     // keep track of the jumping state ... 
     bool isJumping = false;
+
     // make sure to keep track of the movement as well !
 
     Rigidbody2D rb; // note the "2D" prefix 
@@ -14,6 +17,7 @@ public class PlayerAudioController : MonoBehaviour
     void Start()
     {
 	rb = GetComponent<Rigidbody2D>();
+    jump = GetComponent<AudioSource>();
 	// get the references to your audio sources here !        
     }
 
@@ -50,8 +54,10 @@ public class PlayerAudioController : MonoBehaviour
  
     // trigger your jumping sound here !
     public void OnJump() {
-        isJumping = true;
+        if (isJumping = true);
         print("the fox has jumped");
+        jump.Play();
+
     }
 
     // trigger your cherry collection sound here !
