@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAudioController : MonoBehaviour
 {   AudioSource[] allSources;
 
-    AudioSource jump;
+    AudioSource jumpSound;
     AudioSource run;
     AudioSource land;
     AudioSource crouch;
@@ -25,7 +25,7 @@ public class PlayerAudioController : MonoBehaviour
     
 	    rb = GetComponent<Rigidbody2D>();
 
-        jump = allSources[0];
+        jumpSound = allSources[0];
         run = allSources[1];
         land = allSources[2];
         crouch = allSources[3];
@@ -37,19 +37,20 @@ public class PlayerAudioController : MonoBehaviour
 	// get the references to your audio sources here !        
     }
     
-
+    
 
     // FixedUpdate is called whenever the physics engine updates
     void FixedUpdate()
     {float v = rb.velocity.magnitude;
-       
-        
+     
         if (v > 1 && !isPlaying) {
             run.Play();
         isPlaying = true;
-        }  else if (v < 1 && isPlaying) {
+        } 
+        else if (v < 1 && isPlaying)  {
             run.Stop();
         isPlaying = false;
+     
         } 
       
 	// Use the ridgidbody instance to find out if the fox is
@@ -85,15 +86,15 @@ public class PlayerAudioController : MonoBehaviour
     // trigger your jumping sound here !
     public void OnJump() {
         if (isJumping = true); {
-            jump.Play();
+            jumpSound.Play();
         
         }
         print("the fox has jumped");
         if (Random.Range(0,100)<50) {
-            jump.pitch = (1f / 5);
+            jumpSound.pitch = (1f / 5);
         }
         else if (Random.Range(0,100)>50) {
-            jump.pitch = (1f);
+            jumpSound.pitch = (1f);
         }
     }
 
